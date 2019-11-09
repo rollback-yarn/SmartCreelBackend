@@ -1,6 +1,6 @@
 using System;
 
-namespace TestApp
+namespace SmartCreelBackend
 {
     public class WeatherForecast
     {

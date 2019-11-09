@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace TestApp.Controllers
+namespace SmartCreelBackend.Controllers
 {
     [ApiController]
     [Route("[controller]")]

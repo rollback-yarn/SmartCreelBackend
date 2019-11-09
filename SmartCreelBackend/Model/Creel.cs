@@ -5,11 +5,14 @@ namespace SmartCreelBackend.Model
 {
     public partial class Creel
     {
-        public int Id { get; set; }
-        public int? CreelSideAid { get; set; }
-        public int? CreelSideBid { get; set; }
+        public Creel()
+        {
+            CreelSide = new HashSet<CreelSide>();
+        }
 
-        public virtual CreelSide CreelSideA { get; set; }
-        public virtual CreelSide CreelSideB { get; set; }
+        public int Id { get; set; }
+        public string CreelName { get; set; }
+
+        public virtual ICollection<CreelSide> CreelSide { get; set; }
     }
 }

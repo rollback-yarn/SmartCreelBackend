@@ -21,7 +21,6 @@ namespace SmartCreelBackend.Model
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-
             optionsBuilder.UseSqlServer("Data Source=smartcreeldbserver.database.windows.net;Initial Catalog=SmartCreelDb;Persist Security Info=True;User ID=smartcreelAdmin;Password=hackthon+2019");
             if (!optionsBuilder.IsConfigured)
             {
@@ -36,31 +35,24 @@ namespace SmartCreelBackend.Model
             {
                 entity.Property(e => e.Id).ValueGeneratedNever();
 
-                entity.Property(e => e.CreelSideAid).HasColumnName("CreelSideAId");
-
-                entity.Property(e => e.CreelSideBid).HasColumnName("CreelSideBId");
-
-                entity.HasOne(d => d.CreelSideA)
-                    .WithMany(p => p.CreelCreelSideA)
-                    .HasForeignKey(d => d.CreelSideAid)
-                    .HasConstraintName("FK__Creel__CreelSide__534D60F1");
-
-                entity.HasOne(d => d.CreelSideB)
-                    .WithMany(p => p.CreelCreelSideB)
-                    .HasForeignKey(d => d.CreelSideBid)
-                    .HasConstraintName("FK__Creel__CreelSide__5441852A");
+                entity.Property(e => e.CreelName)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
             });
 
             modelBuilder.Entity<CreelSide>(entity =>
             {
-                entity.Property(e => e.Id).ValueGeneratedNever();
-
                 entity.Property(e => e.LoadingTime).HasColumnType("datetime");
+
+                entity.HasOne(d => d.Creel)
+                    .WithMany(p => p.CreelSide)
+                    .HasForeignKey(d => d.CreelId)
+                    .HasConstraintName("FK__CreelSide__Creel__5812160E");
 
                 entity.HasOne(d => d.Machine)
                     .WithMany(p => p.CreelSide)
                     .HasForeignKey(d => d.MachineId)
-                    .HasConstraintName("FK__CreelSide__Machi__5070F446");
+                    .HasConstraintName("FK__CreelSide__Machi__5535A963");
             });
 
             modelBuilder.Entity<Machine>(entity =>
