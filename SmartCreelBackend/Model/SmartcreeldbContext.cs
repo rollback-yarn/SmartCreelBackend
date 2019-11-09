@@ -21,6 +21,8 @@ namespace SmartCreelBackend.Model
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+
+            optionsBuilder.UseSqlServer("Data Source=smartcreeldbserver.database.windows.net;Initial Catalog=SmartCreelDb;Persist Security Info=True;User ID=smartcreelAdmin;Password=hackthon+2019");
             if (!optionsBuilder.IsConfigured)
             {
             }

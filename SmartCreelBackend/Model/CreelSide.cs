@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 
 namespace SmartCreelBackend.Model
-
 {
     public partial class CreelSide
     {
