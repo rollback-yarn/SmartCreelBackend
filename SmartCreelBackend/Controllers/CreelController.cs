@@ -22,7 +22,7 @@ namespace SmartCreelBackend.Controllers
             return dbContext.Creel.ToList();
         }
 
-        [HttpPut(@"{creelId}/{machineName}/{isLeftSide}")]
+        [HttpPut(@"{creelId}/{machineId}/{isLeftSide}")]
         public string UpdateCreel(int creelId, int machineId, bool isLeftSide = false)
         {
             var dbContext = new SmartcreeldbContext();
@@ -40,10 +40,9 @@ namespace SmartCreelBackend.Controllers
 
             creelSide.Creel = currentCreel;
             creelSide.Machine = currentMachine;
+            creelSide.MachineId = machineId;
             creelSide.LoadingTime = DateTime.Now;
             creelSide.IsLeftSide = isLeftSide;
-
-            
 
             dbContext.SaveChanges();
 
